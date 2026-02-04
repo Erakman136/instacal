@@ -5,7 +5,8 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = 5000;
+// Render için PORT'u environment'tan al
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -30,7 +31,13 @@ app.post('/api/login', (req, res) => {
     });
 });
 
+// React build klasörünü serve etmek için (frontend deploy’u tek URL’de çalıştırmak istersen)
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+});
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
 
