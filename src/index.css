@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 214 100% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 10% 23%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 10% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 210 10% 23%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 10% 20%;
+    --input: 210 10% 20%;
+    --ring: 214 100% 59%;
+
+    --radius: 0.5rem;
+
+    /* Instagram specific */
+    --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    --close-friends-gradient: linear-gradient(90deg, #c13584 0%, #5851db 50%, #405de6 100%);
+    --login-bg: 220 13% 10%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+@layer utilities {
+  .instagram-logo-gradient {
+    background: var(--instagram-gradient);
+  }
+
+  .close-friends-gradient {
+    background: var(--close-friends-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .login-panel-bg {
+    background: hsl(var(--login-bg));
+  }
+}
