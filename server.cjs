@@ -30,12 +30,12 @@ app.post('/api/login', (req, res) => {
   });
 });
 
-// Eğer frontend'i aynı servisten çalıştırmak istiyorsan:
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
+// React/Vite build klasörünü serve et
+app.use(express.static(path.join(__dirname, 'dist')));
 
-// React router fallback (Express 5 uyumlu, path-to-regexp hatası vermez)
+// React router fallback (Express 5 uyumlu)
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
